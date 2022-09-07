@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//  Home View Comes From Laravel/Ui Package 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth', 'isAdmin']], function () {
+
+    Route::get('/dashboard', function () {
+        return "This is ADMIN";
+    });
+});
