@@ -6,17 +6,18 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active ">
-                <a class="nav-link" href="./dashboard.html">
+            <li class="nav-item">
+                {{-- nav-item active --}}
+                <a class="nav-link" href="{{ route('admin.dashboard')}}">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </a>
             </li>
             {{-- ELELMENT 2  --}}
             <li class="nav-item ">
-                <a class="nav-link" href="{{ route('welcome')}}">
-                    <i class="material-icons">person</i>
-                    <p>User Profile</p>
+                <a class="nav-link" href="{{ route('categories.index')}}">
+                    <i class="material-icons">add_circle</i>
+                    <p>Categories</p>
                 </a>
             </li>
         </ul>
