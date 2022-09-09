@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +39,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
      Route::post('/delete-category/{id}',[CategoryController::class , 'destroy'])->name('categories.delete') ;
 
 });
+// TODO : Product Owner Middleware 
+// https://stackoverflow.com/questions/28729228/laravel-5-resourceful-routes-plus-middleware
+// TODO : Remove the Show Link From Resource 
+Route::resource('/products' , ProductController::class) ; 

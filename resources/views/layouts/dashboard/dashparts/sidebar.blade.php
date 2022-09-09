@@ -20,6 +20,13 @@
                     <p>Categories</p>
                 </a>
             </li>
+            {{-- Element 3  --}}
+            <li class="nav-item {{ Request::is('products') ? "active" :"" }}">
+                <a class="nav-link" href="{{ route('products.index')}}">
+                    <i class="material-icons">favorite</i>
+                    <p>Products</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

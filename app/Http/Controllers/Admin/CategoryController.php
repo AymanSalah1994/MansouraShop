@@ -42,7 +42,7 @@ class CategoryController extends Controller
     }
 
     public function destroy($id) {
-        // Todo : Delete the Image from storage
+        // TODO : Delete the Image from storage
         $category = Category::find($id) ;
         if($category['category_picture']) {
             // In Case it Has a Photo
