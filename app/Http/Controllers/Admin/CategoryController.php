@@ -18,7 +18,7 @@ class CategoryController extends Controller
     }
 
     public function create() {
-        // Todo : Customize Error Messages  ;
+        // TODO  : Customize Error Messages  ;
         return view('admin.category.create') ;
     }
 
