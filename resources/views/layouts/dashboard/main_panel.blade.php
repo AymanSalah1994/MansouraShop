@@ -31,7 +31,7 @@
     <script src="{{ asset('dashboard_assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('dashboard_assets/js/core/bootstrap-material-design.min.js') }}"></script>
     <script src="{{ asset('dashboard_assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @yield('scripts')
 </body>
 

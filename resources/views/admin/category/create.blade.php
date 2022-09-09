@@ -12,6 +12,9 @@
                         <div class="form-group">
                             <label class="bmd-label-floating">Name</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+{{--                            @error('name')--}}
+{{--                            <span style="color: red">{{ $message }}</span>--}}
+{{--                            @enderror--}}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -80,4 +83,10 @@
 @endsection
 
 @section('scripts')
+    {{--    Error Directives --}}
+    @error('name')
+        <script>
+            swal("!", "{{ $message }}", "warning");
+        </script>
+    @enderror
 @endsection

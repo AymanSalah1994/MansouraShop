@@ -18,6 +18,7 @@ class CategoryController extends Controller
     }
 
     public function create() {
+        // Todo : Customize Error Messages  ;
         return view('admin.category.create') ;
     }
 
@@ -49,6 +50,6 @@ class CategoryController extends Controller
             Storage::delete($category['category_picture']) ;
         }
         $category->delete() ;
-        return redirect()->route('categories.index') ;
+        return redirect()->route('categories.index')->with('status' , 'Category Deleted Successfully') ;
     }
 }

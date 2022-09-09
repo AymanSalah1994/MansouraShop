@@ -6,7 +6,7 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item {{ Request::is('dashboard') ? "active" :"" }}">
                 {{-- nav-item active --}}
                 <a class="nav-link" href="{{ route('admin.dashboard')}}">
                     <i class="material-icons">dashboard</i>
@@ -14,7 +14,7 @@
                 </a>
             </li>
             {{-- ELELMENT 2  --}}
-            <li class="nav-item ">
+            <li class="nav-item {{ Request::is('categories') ? "active" :"" }}">
                 <a class="nav-link" href="{{ route('categories.index')}}">
                     <i class="material-icons">add_circle</i>
                     <p>Categories</p>

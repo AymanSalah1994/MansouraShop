@@ -60,12 +60,12 @@ class CategoryRequest extends FormRequest
     //         // 'email' => 'email address'
     //     ] ;
     // }
-    // public function messages()
-    // {
-    //     return [
-    //         // field.validation_Rule => 'msg '
-    //         'email.email' =>'The Email you Entered is NOT valid!' ,
-    //         '*.required' => 'This :attribute Filed Can Not be Empty !'
-    //     ] ;
-    // }
+     public function messages()
+     {
+         return [
+             // field.validation_Rule => 'msg '
+//             'email.email' =>'The Email you Entered is NOT valid!' ,
+             '*.required' => 'This :attribute Field Can Not be Empty !'
+         ] ;
+     }
 }

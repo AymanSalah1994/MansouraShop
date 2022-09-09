@@ -38,11 +38,10 @@
     <div class="card">
         <div class="card-body">
             <h1> Categories </h1>
-
         </div>
     </div>
-{{--        <p>{{ $category->name }}</p>--}}
-{{--        <img src="{{ Storage::url($category->category_picture) }}" alt="" width="30" height="30">--}}
+    {{-- <p>{{ $category->name }}</p> --}}
+    {{-- <img src="{{ Storage::url($category->category_picture) }}" alt="" width="30" height="30"> --}}
 
     <div class="card">
         <div class="card-header card-header-primary">
@@ -53,55 +52,49 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-primary">
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Description
-                    </th>
-                    <th>
-                        Image
-                    </th>
-                    <th>
-                       Action
-                    </th>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Action
+                        </th>
                     </thead>
                     <tbody>
-                    @foreach ($categories as $category)
-                    <tr>
-                        <td>
-                           {{ $category->id }}
-                        </td>
-                        <td>
-                            {{ $category->name  }}
-                        </td>
-                        <td>
-                            {{ $category->description  }}
-                        </td>
-                        <td class="">
-                            <img src=
-                                     "{{ Storage::url($category->category_picture) }}"
-                                 class="w-25">
-                        </td>
-                        <td class="text-primary">
-                            <a href="{{ route('categories.edit' , $category->id) }}" class="btn btn-primary">Edit</a>
-                            <a
-                             href=""
-                             class="btn btn-danger"
-                             onclick="event.preventDefault();document.getElementById('form-delete').submit();">
-                               Delete</a>
-                            <form id="form-delete"
-                                  action="{{ route('categories.delete' , $category->id)}}"
-                                  method="post"
-                                  style="display: none">
-                                @csrf
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                        @foreach ($categories as $category)
+                            <tr>
+                                <td>
+                                    {{ $category->id }}
+                                </td>
+                                <td>
+                                    {{ $category->name }}
+                                </td>
+                                <td>
+                                    {{ $category->description }}
+                                </td>
+                                <td class="">
+                                    <img src="{{ Storage::url($category->category_picture) }}" class="w-25">
+                                </td>
+                                <td class="text-primary">
+                                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Edit</a>
+                                    <a href="" class="btn btn-danger"
+                                        onclick="event.preventDefault();document.getElementById('form-delete').submit();">
+                                        Delete</a>
+                                    <form id="form-delete" action="{{ route('categories.delete', $category->id) }}"
+                                        method="post" style="display: none">
+                                        @csrf
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -110,4 +103,9 @@
 @endsection
 
 @section('scripts')
+    @if ($status = session('status'))
+        <script>
+            swal("Done !", "{{ $status }}", "success");
+        </script>
+    @endif
 @endsection
