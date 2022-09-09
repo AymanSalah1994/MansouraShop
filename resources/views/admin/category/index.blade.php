@@ -88,7 +88,17 @@
                         </td>
                         <td class="text-primary">
                             <a href="{{ route('categories.edit' , $category->id) }}" class="btn btn-primary">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a
+                             href=""
+                             class="btn btn-danger"
+                             onclick="event.preventDefault();document.getElementById('form-delete').submit();">
+                               Delete</a>
+                            <form id="form-delete"
+                                  action="{{ route('categories.delete' , $category->id)}}"
+                                  method="post"
+                                  style="display: none">
+                                @csrf
+                            </form>
                         </td>
                     </tr>
                     @endforeach

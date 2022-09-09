@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/add-category', [CategoryController::class, 'store'])->name('categories.store');
      Route::get('/edit-category/{id}' , [CategoryController::class ,'edit'])->name('categories.edit') ;
      Route::post('/update-category/{id}' , [CategoryController::class , 'update'])->name('categories.update') ;
-    // Route::post('delete-category/{id}',[CategoryController::class , 'delete'])->name('categories.delete) ;
+      // TODO : Make the PUT instead of post ?
+     Route::post('/delete-category/{id}',[CategoryController::class , 'destroy'])->name('categories.delete') ;
 
 });
