@@ -14,22 +14,11 @@ class ProductController extends Controller
         return view('product.index' , compact('products')) ;  
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('product.create') ; 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -78,6 +67,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        //  {{-- dispay none and still visible inspect --}}
+        // TODO : Delete Protection 
         if($product['product_picture']) {
             // In Case it Has a Photo
             // Because Photo is Nullable & Can Be Empty

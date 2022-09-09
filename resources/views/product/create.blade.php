@@ -2,25 +2,22 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h6>Add new Category</h6>
+            <h6>Add new Product</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('categories.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('products.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">Name</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-{{--                            @error('name')--}}
-{{--                            <span style="color: red">{{ $message }}</span>--}}
-{{--                            @enderror--}}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="bmd-label-floating">slug</label>
-                            <input type="text" class="form-control" name="slug" value="{{ old('slug') }}">
+                            <label class="bmd-label-floating">small description</label>
+                            <input type="text" class="form-control" name="small_description" value="{{ old('small_description') }}">
                         </div>
                     </div>
                 </div>
@@ -31,6 +28,32 @@
                             <div class="form-group">
                                 <textarea class="form-control" rows="5" name="description" value="{{ old('description') }}"></textarea>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">original price</label>
+                            <input type="text" class="form-control" name="original_price" value="{{ old('original_price') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">selling price</label>
+                            <input type="text" class="form-control" name="selling_price" value="{{ old('selling_price') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">quantity</label>
+                            <input type="text" class="form-control" name="quantity" value="{{ old('quantity') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">tax</label>
+                            <input type="text" class="form-control" name="tax" value="{{ old('tax') }}">
                         </div>
                     </div>
                 </div>
@@ -67,14 +90,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Popular</label>
-                            <input type="checkbox" class="form-control" name="popular">
+                            <label class="bmd-label-floating">trending</label>
+                            <input type="checkbox" class="form-control" name="trending">
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="col-md-12">
-                    <input type="file" class="form-group" name="category_picture">
+                    <input type="file" class="form-group" name="product_picture">
                 </div>
                 <button type="submit" class="btn btn-primary pull-right">Create Category</button>
             </form>

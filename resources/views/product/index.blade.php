@@ -68,7 +68,8 @@
                                         onclick="event.preventDefault();document.getElementById('form-delete').submit();">
                                         Delete</a>
                                     <form id="form-delete" action="{{ route('products.destroy', $product->id) }}"
-                                        method="post" style="display: none">
+                                        {{-- dispay none and still visible inspect --}}
+                                        method="post" style="display: none !important;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
