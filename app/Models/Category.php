@@ -14,4 +14,9 @@ class Category extends Model
         'name', 'slug', 'description', 'status', 'popular',
         'meta_title', 'meta_description', 'meta_keywords', 'category_picture'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
