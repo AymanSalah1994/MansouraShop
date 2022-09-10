@@ -3,10 +3,29 @@
     <div class="card">
         <div class="card-body">
             <h1> Ayman Salah </h1>
-            <p>Add Merchant </p>
-            <p>,Add Category[ For merchant ]</p>
-            <p>, See Orders ,see users ,</p>
-            <p> See Billing</p>
+            <ul>
+                <li>
+                    <p>CRUD Category</p>
+                </li>
+                <li>
+                    <p>CRUD Products</p>
+                </li>
+                <li>
+                    <p>CRUD Merchants</p>
+                </li>
+                <li>
+                    <p>CRUD Deliverer</p>
+                </li>
+                <li>
+                    <p>CRUD Users</p>
+                </li>
+                <li>
+                    <p>CRUD Orders</p>
+                </li>
+                <li>
+                    <p>See Billing</p>
+                </li>
+            </ul>
         </div>
     </div>
 @endsection
