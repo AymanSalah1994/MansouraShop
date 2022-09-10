@@ -83,16 +83,16 @@
                                 <td class="">
                                     <img src="{{ Storage::url($category->category_picture) }}" class="w-25">
                                 </td>
-                                <td class="text-primary">
+                                <td>
                                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Edit</a>
                                     <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('form-delete').submit();">
+                                        onclick="event.preventDefault();document.getElementById('{{$category->id}}').submit();">
                                         Delete</a>
-                                    <form id="form-delete" action="{{ route('categories.delete', $category->id) }}"
-                                        method="post" style="display: none">
-                                        @csrf
-                                    </form>
                                 </td>
+                                <form id="{{$category->id}}" action="{{ route('categories.delete', $category->id) }}"
+                                    {{-- dispay none and still visible inspect --}} method="post" style="display: none">
+                                    @csrf
+                                </form>
                             </tr>
                         @endforeach
                     </tbody>

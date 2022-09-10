@@ -48,9 +48,8 @@
                         <th>ID</th>
                         <th>Category</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Selling Price</th>
                         <th>Image</th>
-                        <th>Price</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -59,22 +58,21 @@
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->description }}</td>
+                                <td>{{ $product->selling_price }}</td>
                                 <td class="">
                                     <img src="{{ Storage::url($product->product_picture) }}" class="w-25">
                                 </td>
-                                <td>{{ $product->selling_price }}</td>
-                                <td class="text-primary">
-                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a>
-                                    <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('form-delete').submit();">
-                                        Delete</a>
-                                    <form id="form-delete" action="{{ route('products.destroy', $product->id) }}"
-                                        {{-- dispay none and still visible inspect --}} method="post" style="display: none !important;">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
+                                <td class=" ">
+                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary" >Edit</a>
+                                        <a href="" class="btn btn-danger" 
+                                    onclick="event.preventDefault();document.getElementById('{{$product->id}}').submit();">
+                                    Delete</a>
                                 </td>
+                                <form id="{{$product->id}}" action="{{ route('products.destroy', $product->id) }}"
+                                    {{-- dispay none and still visible inspect --}} method="post" style="display: none">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </tr>
                         @endforeach
                     </tbody>
