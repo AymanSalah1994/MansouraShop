@@ -59,12 +59,12 @@
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->selling_price }}</td>
-                                <td class="">
+                                <td >
                                     <img src="{{ Storage::url($product->product_picture) }}" class="w-25">
                                 </td>
-                                <td class=" ">
-                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary" >Edit</a>
-                                        <a href="" class="btn btn-danger" 
+                                <td>
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary" >Edit</a>
+                            <a href="" class="btn btn-danger" 
                                     onclick="event.preventDefault();document.getElementById('{{$product->id}}').submit();">
                                     Delete</a>
                                 </td>
