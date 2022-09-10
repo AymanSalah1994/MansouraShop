@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,12 +18,15 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('product.create') ; 
+        $allCategories = Category::all() ; 
+        return view('product.create' , compact('allCategories')) ; 
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $allRequestData = $request->handleRequest() ;
+        Product::create($allRequestData);
+        return redirect()->route('products.index')->with('status' , 'Product Created Successfully') ;
     }
 
     /**
@@ -44,7 +49,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $allCategories = Category::all() ;
+        $theProduct = Product::findOrFail($product->id) ; 
+        return view('product.edit' , compact('theProduct' , 'allCategories')) ; 
     }
 
     /**

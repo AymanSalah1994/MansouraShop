@@ -46,6 +46,7 @@
                 <table class="table">
                     <thead class=" text-primary">
                         <th>ID</th>
+                        <th>Category</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Image</th>
@@ -55,7 +56,8 @@
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
-                                <td> {{ $product->id }}</td>
+                                <td>$product->id</td>
+                                <td> {{ $product->category->name }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->description }}</td>
                                 <td class="">

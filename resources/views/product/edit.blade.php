@@ -2,22 +2,24 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h6>Add new Category</h6>
+            <h6>Edit Product</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('categories.update' ,$category->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('products.update',$theProduct->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">Name</label>
-                            <input type="text" class="form-control" name="name" value="{{ old('name' , $category->name) }}">
+                            <input type="text" class="form-control" name="name" value="{{ old('name',$theProduct->name) }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="bmd-label-floating">slug</label>
-                            <input type="text" class="form-control" name="slug" value="{{ old('slug' ,$category->slug) }}">
+                            <label class="bmd-label-floating">small description</label>
+                            <input type="text" class="form-control" name="small_description"
+                                value="{{ old('small_description',$theProduct->small_description) }}">
                         </div>
                     </div>
                 </div>
@@ -26,8 +28,36 @@
                         <div class="form-group">
                             <label>Description , SEPERATE WITH comma !!</label>
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" name="description" >{{ old('description' , $category->description) }}</textarea>
+                                <textarea class="form-control" rows="5" name="description">{{ old('description',$theProduct->description) }}</textarea>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">original price</label>
+                            <input type="number" class="form-control" name="original_price"
+                                value="{{ old('original_price',$theProduct->original_price) }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">selling price</label>
+                            <input type="number" class="form-control" name="selling_price"
+                                value="{{ old('selling_price',$theProduct->selling_price) }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">quantity</label>
+                            <input type="number" class="form-control" name="quantity" value="{{ old('quantity',$theProduct->quantity) }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">tax</label>
+                            <input type="number" class="form-control" name="tax" value="{{ old('tax',$theProduct->tax) }}">
                         </div>
                     </div>
                 </div>
@@ -35,13 +65,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">meta_title</label>
-                            <input type="text" class="form-control" name="meta_title" value="{{ old('meta_title' ,$category->meta_title) }}">
+                            <input type="text" class="form-control" name="meta_title" value="{{ old('meta_title',$theProduct->meta_title) }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">meta_keywords</label>
-                            <input type="text" class="form-control" name="meta_keywords" value="{{ old('meta_keywords' ,$category->meta_keywords) }}">
+                            <input type="text" class="form-control" name="meta_keywords"
+                                value="{{ old('meta_keywords',$theProduct->meta_keywords) }}">
                         </div>
                     </div>
                 </div>
@@ -50,7 +81,7 @@
                         <div class="form-group">
                             <label>Meta Description</label>
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" name="meta_description" >{{ old('meta_description' ,$category->meta_description) }}</textarea>
+                                <textarea class="form-control" rows="5" name="meta_description">{{ old('meta_description',$theProduct->meta_description) }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -59,26 +90,33 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="bmd-label-floating">Status</label>
-                            <input type="checkbox" class="form-control" name="status" {{ $category->status=='1' ? "checked" : ""}}>
+                            <input type="checkbox" class="form-control" name="status" {{ $theProduct->status =='1' ? "checked" : ""}}>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Popular</label>
-                            <input type="checkbox" class="form-control" name="popular" {{ $category->popular=='1' ? "checked" : ""}}>
+                            <label class="bmd-label-floating">trending</label>
+                            <input type="checkbox" class="form-control" name="trending" {{ $theProduct->trending =='1' ? "checked" : ""}}>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <img src="{{ Storage::url($category->category_picture) }}" alt="" width="100">
+                            <select name="category_id" id="" class="form-select form-control">
+                                <option value="">Select Category</option>
+                                @foreach ($allCategories as $category)
+                                    <option value="{{ $category->id }}" {{ old('company_id',$theProduct->category_id)==$category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="col-md-12">
-                    <input type="file" class="form-group" name="category_picture">
+                    <input type="file" class="form-group" name="product_picture">
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Update Category</button>
+                <button type="submit" class="btn btn-primary pull-right">Create Product</button>
             </form>
         </div>
     </div>
