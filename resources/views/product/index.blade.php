@@ -56,8 +56,8 @@
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
-                                <td>$product->id</td>
-                                <td> {{ $product->category->name }}</td>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->description }}</td>
                                 <td class="">
@@ -70,8 +70,7 @@
                                         onclick="event.preventDefault();document.getElementById('form-delete').submit();">
                                         Delete</a>
                                     <form id="form-delete" action="{{ route('products.destroy', $product->id) }}"
-                                        {{-- dispay none and still visible inspect --}}
-                                        method="post" style="display: none !important;">
+                                        {{-- dispay none and still visible inspect --}} method="post" style="display: none !important;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
