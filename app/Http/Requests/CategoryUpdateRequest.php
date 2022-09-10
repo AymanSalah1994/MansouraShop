@@ -7,21 +7,11 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Category ;
 class CategoryUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         return [
@@ -41,7 +31,6 @@ class CategoryUpdateRequest extends FormRequest
     public function handleRequest($category_id)
     {
         $category = Category::find($category_id) ;
-
         $allRequestData = $this->validated();
         if ($this->hasFile('category_picture')) {
             if($category['category_picture']) {

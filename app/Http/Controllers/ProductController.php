@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,21 +13,21 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products  = Product::all() ; 
-        return view('product.index' , compact('products')) ;  
+        $products  = Product::all();
+        return view('product.index', compact('products'));
     }
 
     public function create()
     {
-        $allCategories = Category::all() ; 
-        return view('product.create' , compact('allCategories')) ; 
+        $allCategories = Category::all();
+        return view('product.create', compact('allCategories'));
     }
 
     public function store(ProductRequest $request)
     {
-        $allRequestData = $request->handleRequest() ;
+        $allRequestData = $request->handleRequest();
         Product::create($allRequestData);
-        return redirect()->route('products.index')->with('status' , 'Product Created Successfully') ;
+        return redirect()->route('products.index')->with('status', 'Product Created Successfully');
     }
 
     /**
@@ -41,29 +42,19 @@ class ProductController extends Controller
         //TODO : Remove it From REsource 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
-        $allCategories = Category::all() ;
-        $theProduct = Product::findOrFail($product->id) ; 
-        return view('product.edit' , compact('theProduct' , 'allCategories')) ; 
+        $allCategories = Category::all();
+        $theProduct = Product::findOrFail($product->id);
+        return view('product.edit', compact('theProduct', 'allCategories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
+    public function update(ProductUpdateRequest $request, Product $product)
     {
-        //
+        $allReuestData  = $request->handleRequest($product->id);
+        $theProduct  = Product::find($product->id) ; 
+        $theProduct->update($allReuestData) ; 
+        return redirect()->route('products.index')->with('status' , 'Product Updated SuccessFully!') ; 
     }
 
     /**
@@ -76,12 +67,12 @@ class ProductController extends Controller
     {
         //  {{-- dispay none and still visible inspect --}}
         // TODO : Delete Protection 
-        if($product['product_picture']) {
+        if ($product['product_picture']) {
             // In Case it Has a Photo
             // Because Photo is Nullable & Can Be Empty
-            Storage::delete($product['product_picture']) ;
+            Storage::delete($product['product_picture']);
         }
-        $product->delete() ; 
-        return redirect()->route('products.index')->with('status' , 'Product Deleted Successfully') ;
+        $product->delete();
+        return redirect()->route('products.index')->with('status', 'Product Deleted Successfully');
     }
 }

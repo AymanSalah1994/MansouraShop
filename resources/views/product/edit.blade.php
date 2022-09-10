@@ -116,7 +116,7 @@
                 <div class="col-md-12">
                     <input type="file" class="form-group" name="product_picture">
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Create Product</button>
+                <button type="submit" class="btn btn-primary pull-right">Update Product</button>
             </form>
         </div>
     </div>
