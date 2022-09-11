@@ -6,6 +6,8 @@ use  App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Store\StoreController;
 
+
+// Routes For the Store Front [ For the Customer ]
 Route::get('/', [StoreController::class , 'index'])->name('store.index');
 
 Auth::routes();
@@ -28,7 +30,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
      Route::post('/delete-category/{id}',[CategoryController::class , 'destroy'])->name('categories.delete') ;
 
 });
-// TODO : Product Owner Middleware 
+// TODO : Product Owner Middleware  / Show Only His Stuff and Check That On each CRUD 
 // https://stackoverflow.com/questions/28729228/laravel-5-resourceful-routes-plus-middleware
 // TODO : Remove the Show Link From Resource 
 Route::resource('/products' , ProductController::class) ; 

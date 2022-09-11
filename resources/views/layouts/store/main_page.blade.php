@@ -18,8 +18,7 @@
 <body>
 
     @include('layouts.store.storeparts.nav')
-    @include('layouts.store.storeparts.carousel')
-   
+    @yield('slider')
     <div class="content">
         @yield('content')
     </div>

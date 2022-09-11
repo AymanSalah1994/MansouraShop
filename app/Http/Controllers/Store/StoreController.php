@@ -9,6 +9,8 @@ class StoreController extends Controller
 {
     public function index() {
         // TODO : Changing this Main Page
-        return view('layouts.store.main_page') ; 
+        // Make a New Folder Outside Layouts and Exntend the Main Page
+        // TODO : Get Featured Products and Categoreis 
+        return view('store.home') ; 
     }
 }
