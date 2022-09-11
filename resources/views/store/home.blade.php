@@ -7,13 +7,37 @@
 @section('content')
     <div class="py-5">
         <div class="container">
+            <h2>Featured Products</h2>
             <div class="row">
-                @foreach ($featured_products as $product)
-                    <div class="col-md-3">
-                        @include('layouts.store.storeparts.card')
-                    </div>
-                @endforeach
+                <div class="owl-carousel owl-theme">
+                    @foreach ($featured_products as $product)
+                        <div class="item">
+                            @include('layouts.store.storeparts.card')
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items:4
+                }
+            }
+        })
+    </script>
 @endsection

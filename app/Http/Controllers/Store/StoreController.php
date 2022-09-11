@@ -12,7 +12,7 @@ class StoreController extends Controller
     {
         // TODO : Changing this Main Page
         // Make a New Folder Outside Layouts and Exntend the Main Page
-        $featured_products = Product::where('trending', '1')->take(3)->get();
+        $featured_products = Product::where('trending', '1')->take(5)->get();
         return view('store.home', compact('featured_products'));
     }
 }
