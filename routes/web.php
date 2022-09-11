@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Store\StoreController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +17,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [StoreController::class , 'index'])->name('store.index');
 
 Auth::routes();
 
