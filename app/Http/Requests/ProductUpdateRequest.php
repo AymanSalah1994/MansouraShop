@@ -56,7 +56,7 @@ class ProductUpdateRequest extends FormRequest
             $allRequestData['product_picture'] = $fileName;
         }
         $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
-        $allRequestData['trending'] = ($this->popular == 'on' ? '1' : '0');
+        $allRequestData['trending'] = ($this->trending == 'on' ? '1' : '0');
         return $allRequestData;
     }
 }
