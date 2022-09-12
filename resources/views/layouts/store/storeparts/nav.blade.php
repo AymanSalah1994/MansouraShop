@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light fixed-top">
+<nav class="navbar navbar-expand-lg " style="background-color: #caa1ef;">
     <div class="container">
         <a class="navbar-brand" href="{{ route('store.index') }}">Mansoura Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"

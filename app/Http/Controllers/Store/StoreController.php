@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Store;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use Database\Factories\CategoryFactory;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -26,6 +27,9 @@ class StoreController extends Controller
     }
 
     public function categoryProducts($id) {
-        
+        $category = Category::findOrFail($id) ; 
+        $categoryName = $category->name ; 
+        $categoryProducts = $category->products()->get()  ; 
+        return view('store.category-products' , compact(['categoryProducts','categoryName'])) ; 
     }
 }
