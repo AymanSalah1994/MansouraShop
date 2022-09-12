@@ -9,6 +9,7 @@ use App\Http\Controllers\Store\StoreController;
 
 // Routes For the Store Front [ For the Customer ]
 Route::get('/', [StoreController::class , 'index'])->name('store.index');
+Route::get('/store/categories', [StoreController::class , 'categories'])->name('store.categories');
 
 Auth::routes();
 
