@@ -28,10 +28,10 @@ class StoreController extends Controller
     public function categoryProducts($id)
     {
         $category = Category::findOrFail($id);
-        $categoryName = $category->name;
+        
         // Get Products ONLY that are Availiable
         $categoryProducts = $category->products()->where('status', '1')->get();
-        return view('store.category-products', compact(['categoryProducts', 'categoryName']));
+        return view('store.category-products', compact(['categoryProducts', 'category']));
     }
 
     public function productDetails($id)
