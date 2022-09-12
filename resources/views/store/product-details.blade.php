@@ -81,14 +81,11 @@
                 e.preventDefault();
                 var box_value = $('.quantity-input').val();
                 var parsed_box_value = parseInt(box_value, 10);
-                console.log(parsed_box_value);
                 parsed_box_value = isNaN(parsed_box_value) ? 0 : parsed_box_value;
                 if (parsed_box_value < 10) {
                     ++parsed_box_value;
                     $('.quantity-input').val(parsed_box_value);
                 }
-
-
             });
 
             $('.decrement-btn').click(function(e) {
@@ -97,15 +94,13 @@
                 var parsed_box_value = parseInt(box_value, 10);
                 console.log(parsed_box_value);
                 parsed_box_value = isNaN(parsed_box_value) ? 0 : parsed_box_value;
-                if (parsed_box_value < 10 && parsed_box_value > 1) {
+                if (parsed_box_value > 1) {
                     --parsed_box_value;
                     $('.quantity-input').val(parsed_box_value);
                 }
-
-
             });
 
-            
+
         });
     </script>
 @endsection
