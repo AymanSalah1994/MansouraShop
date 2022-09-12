@@ -6,12 +6,15 @@ use  App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Store\StoreController;
 
+//Auth Routes 
+Auth::routes();
+
+
 
 // Routes For the Store Front [ For the Customer ]
 Route::get('/', [StoreController::class , 'index'])->name('store.index');
 Route::get('/store/categories', [StoreController::class , 'categories'])->name('store.categories');
-
-Auth::routes();
+Route::get('/products/{id}' , [StoreController::class , 'categoryProducts'])->name('category.products') ; 
 
 //  Home View Comes From Laravel/Ui Package
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
