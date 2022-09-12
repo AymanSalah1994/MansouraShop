@@ -46,9 +46,9 @@
                             <div class="col-md-2">
                                 <label for="">Quantity</label>
                                 <div class="input-group text-center mb-3">
-                                    <span class="input-group-text">-</span>
-                                    <input type="text" name="" id="" value="1" class="form-control">
-                                    <span class="input-group-text">+</span>
+                                    <span class="input-group-text decrement-btn">-</span>
+                                    <input type="text" name="" value="1" class="form-control quantity-input">
+                                    <span class="input-group-text increment-btn">+</span>
                                 </div>
                             </div>
 
@@ -71,4 +71,41 @@
         </div>
     </div>
     <br>
+@endsection
+
+@section('scripts')
+    <script>
+        console.log('xxx');
+        $(document).ready(function() {
+            $('.increment-btn').click(function(e) {
+                e.preventDefault();
+                var box_value = $('.quantity-input').val();
+                var parsed_box_value = parseInt(box_value, 10);
+                console.log(parsed_box_value);
+                parsed_box_value = isNaN(parsed_box_value) ? 0 : parsed_box_value;
+                if (parsed_box_value < 10) {
+                    ++parsed_box_value;
+                    $('.quantity-input').val(parsed_box_value);
+                }
+
+
+            });
+
+            $('.decrement-btn').click(function(e) {
+                e.preventDefault();
+                var box_value = $('.quantity-input').val();
+                var parsed_box_value = parseInt(box_value, 10);
+                console.log(parsed_box_value);
+                parsed_box_value = isNaN(parsed_box_value) ? 0 : parsed_box_value;
+                if (parsed_box_value < 10 && parsed_box_value > 1) {
+                    --parsed_box_value;
+                    $('.quantity-input').val(parsed_box_value);
+                }
+
+
+            });
+
+            
+        });
+    </script>
 @endsection
