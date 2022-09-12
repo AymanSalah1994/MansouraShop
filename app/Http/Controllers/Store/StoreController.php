@@ -25,10 +25,12 @@ class StoreController extends Controller
         return view('store.categories', compact('allCategories'));
     }
 
-    public function categoryProducts($id) {
-        $category = Category::findOrFail($id) ; 
-        $categoryName = $category->name ; 
-        $categoryProducts = $category->products()->get()  ; 
-        return view('store.category-products' , compact(['categoryProducts','categoryName'])) ; 
+    public function categoryProducts($id)
+    {
+        $category = Category::findOrFail($id);
+        $categoryName = $category->name;
+        // Get Products ONLY that are Availiable
+        $categoryProducts = $category->products()->where('status','1')->get();
+        return view('store.category-products', compact(['categoryProducts', 'categoryName']));
     }
 }
